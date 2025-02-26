@@ -18,6 +18,11 @@ Run the terraform to build two ec2:
 
 `terraform apply “plan”`
 
+Use the same key as Terraform provision EC2, Edit ./ansible/ansible.cfg:
+```yaml
+private_key_file = ~/.ssh/4640lab7
+```
+
 Edit ./ansible/inventory/hosts.yml:
 
 ```yaml
@@ -26,13 +31,9 @@ all:
     web:
       hosts:
         server-one:
-          ansible_host: 35.86.115.18
-          ansible_user: ubuntu
-          ansible_ssh_private_key_file: ~/.ssh/4640lab7
+          35.86.115.18: {}
         server-two:
-          ansible_host: 54.185.246.25
-          ansible_user: ubuntu
-          ansible_ssh_private_key_file: ~/.ssh/4640lab7
+          54.185.246.25: {}
 ```
 
 Edit ./ansible/playbook.yml:
